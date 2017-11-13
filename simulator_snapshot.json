@@ -1,0 +1,17 @@
+{
+  "entries": [
+    {
+      "process_type": 12,
+      "group_name": "apache-tomcat-*",
+      "processes": [
+        {
+          "process_name": "java",
+          "properties": {
+            
+            "ListeningPorts": "8080"
+          }
+        }
+      ]
+    }
+  ]
+}

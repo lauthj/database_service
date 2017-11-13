@@ -1,0 +1,39 @@
+{
+  "name": "custom.python.database_servic",
+  "version": "1.1",
+  "type": "python",
+  "entity": "PROCESS_GROUP_INSTANCE",
+  "processTypeNames": ["TOMCAT"],
+  "source": {
+    "package": "database_service",
+    "className": "DatabaseService",
+    "install_requires": ["pyodbc"],
+    "activation": "Singleton"
+  },
+  "metrics": [
+    
+    {
+      "timeseries": {
+        "key": "record_diff",
+        "unit": "Count"
+      }
+    },
+    {
+      "timeseries": {
+        "key": "record_last",
+        "unit": "Count"
+      }
+    }
+  ],
+  "configUI": {
+    "displayName": "custom.python.database_service"
+  },
+  "properties": [
+    
+    {
+      "key": "connection_string",
+      "type": "Password"
+    }
+  ]
+    
+}
