@@ -1,6 +1,7 @@
 {
+  
   "name": "custom.python.database_servic",
-  "version": "1.1",
+  "version": "1.2",
   "type": "python",
   "entity": "PROCESS_GROUP_INSTANCE",
   "processTypeNames": ["TOMCAT"],
@@ -10,8 +11,40 @@
     "install_requires": ["pyodbc"],
     "activation": "Singleton"
   },
-  "metrics": [
+  "ui": {
+    "keymetrics" : [
+      {
+        "key" : "record_diff",
+        "aggregation" : "avg",
+        "mergeaggregation" : "sum",
+        "displayname" : "Record Diff"
+       }
+    ],
     
+    "keycharts" : [ ],
+    "charts": [
+      {
+        "title": "Database Queries",
+        "group": "Business Metrics",
+        "series": [
+          {
+            "key": "record_diff",
+            "aggregation": "sum",
+            "displayname": "Record Diff",
+            "seriestype": "area"
+          },
+          {
+            "key": "record_last",
+            "aggregation": "avg",
+            "displayname": "Record Last",
+            "seriestype": "area"
+          }
+        ]
+      } 
+    ]
+  }
+  ,
+  "metrics": [
     {
       "timeseries": {
         "key": "record_diff",
@@ -26,14 +59,21 @@
     }
   ],
   "configUI": {
-    "displayName": "custom.python.database_service"
+    "displayName": "DataBase Service",
+    "properties" : [
+      { "key" : "connection_string", "displayName": "Connection String", "displayOrder": 1, "displayHint": "enter the connection string to DB you are attempting to connect with" }
+     ]
+    
   },
   "properties": [
     
     {
       "key": "connection_string",
-      "type": "Password"
+      "type": "String",
+      "defaultValue" : "DRIVER={SQL Server};SERVER=localhost\\DEV;DATABASE=test;UID=test;PWD=odbctest"
+      
     }
+    
   ]
     
 }
